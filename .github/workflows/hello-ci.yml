@@ -5,10 +5,20 @@ jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
-      # - name: Run a greeting
-      #   run: echo "The CI pipeline has successfully started!"
+      # Step 1: Checkout your repository
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # Step 3: Install dependencies
+      - name: Install pytest
+        run: pip install pytest
+
+      # Step 4: Run Python Tests
       - name: Run Python Tests
-        run: python3 -m pytest test_calc.py
+        run: pytest -v test_calc.py
