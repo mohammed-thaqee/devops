@@ -5,5 +5,10 @@ jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
-      - name: Run a greeting
-        run: echo "The CI pipeline has successfully started!"
+      # - name: Run a greeting
+      #   run: echo "The CI pipeline has successfully started!"
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Python Tests
+        run: python3 test_calc.py
