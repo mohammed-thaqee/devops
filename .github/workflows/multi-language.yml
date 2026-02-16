@@ -1,0 +1,30 @@
+name: Multi-Language CI
+
+on: [push]
+
+jobs:
+  python-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install Python dependencies
+        run: pip install pytest
+      - name: Run Python tests
+        run: pytest
+
+  js-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install JS dependencies
+        run: npm install
+      - name: Run JS tests
+        run: npm test
