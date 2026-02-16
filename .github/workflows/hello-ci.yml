@@ -1,3 +1,29 @@
+# name: Greeting Workflow
+# on: [push]
+
+# jobs:
+#   say-hello:
+#     runs-on: ubuntu-latest
+#     steps:
+#       # Step 1: Checkout your repository
+#       - name: Checkout Code
+#         uses: actions/checkout@v4
+
+#       # Step 2: Set up Python
+#       - name: Set up Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: '3.11'
+
+#       # Step 3: Install dependencies
+#       - name: Install pytest
+#         run: pip install pytest
+
+#       # Step 4: Run Python Tests
+#       - name: Run Python Tests
+#         run: pytest -v test_calc.py
+
+
 name: Greeting Workflow
 on: [push]
 
@@ -5,20 +31,8 @@ jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout your repository
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4      # <-- This pulls your code into the runner
 
-      # Step 2: Set up Python
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-      # Step 3: Install dependencies
-      - name: Install pytest
-        run: pip install pytest
-
-      # Step 4: Run Python Tests
       - name: Run Python Tests
-        run: pytest -v test_calc.py
+        run: python3 test_calc.py      # <-- This runs your test
